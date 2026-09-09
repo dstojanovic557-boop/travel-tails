@@ -232,10 +232,16 @@
     .muted { color: var(--text-500); font-size: 15px; margin: 0 0 28px; font-family: 'Geist', sans-serif; line-height: 1.5; }
 
     @media (max-width: 780px) {
-      .outer { flex-direction: column; min-height: 0; margin: 10px; gap: 10px; }
-      .panel-right { height: 220px; min-height: 0; flex: none; order: -1; border-radius: 16px; }
-      .panel-left { border-radius: 16px; padding: 26px 20px 40px; justify-content: flex-start; }
-      .hero-text { font-size: 20px; bottom: 18px; left: 16px; right: 16px; }
+      .outer { flex-direction: column; min-height: 100vh; margin: 0; gap: 0; }
+      .panel-right { display: none; }
+      .panel-left {
+        flex: 1 1 auto;
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+        padding: 28px 20px 40px;
+        justify-content: flex-start;
+      }
       .brand { font-size: 24px; margin-bottom: 20px; }
     }
   </style>
