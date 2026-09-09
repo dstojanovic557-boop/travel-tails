@@ -48,16 +48,16 @@
       flex: 1 1 50%;
       background: var(--panel-bg);
       border-radius: 20px;
-      padding: clamp(32px, 7vw, 96px) clamp(24px, 9vw, 130px);
+      padding: 72px 64px;
       overflow-y: auto;
       scrollbar-width: none;
       -ms-overflow-style: none;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .panel-left::-webkit-scrollbar { display: none; width: 0; height: 0; }
-    .panel-left > div { max-width: 620px; width: 100%; margin: 0 auto; }
+    .panel-left > div { max-width: 660px; width: 100%; margin: 0 auto; }
     .panel-right {
       flex: 1 1 50%;
       position: relative;
@@ -231,6 +231,17 @@
       font-weight: 700; color: var(--text-900);
     }
     .muted { color: var(--text-500); font-size: 15px; margin: 0 0 28px; font-family: 'Geist', sans-serif; line-height: 1.5; }
+
+    @media (max-width: 1280px) and (min-width: 901px) {
+      .panel-left { flex: 1 1 58%; padding: 56px 44px; }
+      .panel-right { flex: 1 1 42%; }
+    }
+
+    @media (max-width: 900px) and (min-width: 781px) {
+      .panel-left { flex: 1 1 64%; padding: 44px 32px; }
+      .panel-right { flex: 1 1 36%; }
+      .panel-left > div { max-width: 100%; }
+    }
 
     @media (max-width: 780px) {
       .outer { flex-direction: column; min-height: 100vh; margin: 0; gap: 0; }
@@ -557,7 +568,7 @@
       var inFlight = 0;
       var doneCount = 0;
       var failed = false;
-      var CONCURRENCY = 3;
+      var CONCURRENCY = 2;
 
       function launchNext() {
         if (failed) return;
