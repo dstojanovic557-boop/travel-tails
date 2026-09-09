@@ -540,8 +540,8 @@
     var batches = [];
     var current = [];
     var currentBytes = 0;
-    var MAX_COUNT = 6;
-    var MAX_BYTES = 8 * 1024 * 1024;
+    var MAX_COUNT = 8;
+    var MAX_BYTES = 20 * 1024 * 1024;
 
     list.forEach(function (entry) {
       var size = entry.file.size || 0;
@@ -568,7 +568,7 @@
       var inFlight = 0;
       var doneCount = 0;
       var failed = false;
-      var CONCURRENCY = 2;
+      var CONCURRENCY = 3;
 
       function launchNext() {
         if (failed) return;
@@ -586,7 +586,7 @@
             var photos = batch.map(function (entry, i) {
               return { filename: entry.file.name, base64: base64List[i], mimeType: entry.file.type || 'image/jpeg' };
             });
-            return callServerWithRetry('uploadPhotoBatch', [folderId, startIndex, total, photos], 2, 60000);
+            return callServerWithRetry('uploadPhotoBatch', [folderId, startIndex, total, photos], 2, 90000);
           })
           .then(function () {
             inFlight--;
