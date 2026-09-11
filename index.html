@@ -599,7 +599,7 @@
       var ordered = buildOrderedFilenames(files);
       var meta = ordered.map(function (o) { return { filename: o.filename, mimeType: o.mimeType }; });
 
-      callServerWithRetry('getUploadUrls', [folderId, meta], 2, 60000).then(function (urls) {
+      callServerWithRetry('getUploadUrls', [folderId, meta, window.location.origin], 2, 60000).then(function (urls) {
         var targets = ordered.map(function (o, i) {
           return { file: o.file, mimeType: o.mimeType, sessionUrl: urls[i] };
         });
